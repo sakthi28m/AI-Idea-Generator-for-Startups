@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#06b6d4">
+    <title>SPARK AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.svg') }}" type="image/svg+xml">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><img src="{{ url_for('static', filename='logo.svg') }}" alt="SPARK AI"></div>
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Home</a>
+            <a href="#" onclick="history.back(); return false;">Back</a>
+            <a href="{{ url_for('favorites_page') }}">Favorites</a>
+            <a href="{{ url_for('history_page') }}">History</a>
+        </div>
+    </nav>
+
+    <section class="result-page">
+        <h2 class="results-title">Ideas for "{{ domain }}"</h2>
+
+        <div class="results-grid">
+            {% for result in results %}
+            <article class="idea-card">
+                <header>
+                    <h3>{{ result.startup_name }}</h3>
+                    <p class="tagline">{{ result.tagline }}</p>
+                </header>
+                <div class="idea-body">
+                    <p class="idea-text">{{ result.idea }}</p>
+                    <ul class="meta">
+                        <li>🎯 <strong>Audience:</strong> {{ result.audience }}</li>
+                        <li>✨ <strong>Feature:</strong> {{ result.feature }}</li>
+                        <li>💰 <strong>Monetization:</strong> {{ result.monetization }}</li>
+                        <li>💸 <strong>Estimated initial investment:</strong> {{ result.initial_investment }}</li>
+                        <li>⏱️ <strong>Profit expected in:</strong> {{ result.user_profit_duration_months }} months</li>
+                        <li>📊 <strong>Investment fit:</strong> {{ result.investment_fit }}</li>
+                    </ul>
+                    <div class="card-actions">
+                        <a class="view-btn" href="{{ url_for('idea_detail', idx=loop.index0) }}">View Details</a>
+                        <form method="POST" action="{{ url_for('favorite_toggle') }}" style="display:inline">
+                            <input type="hidden" name="index" value="{{ loop.index0 }}">
+                            <button type="submit" class="save-btn">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="actions">
+            <form method="POST" action="{{ url_for('dashboard') }}" class="inline-form">
+                <input type="hidden" name="domain" value="{{ domain }}">
+                <input type="hidden" name="count" value="{{ results|length }}">
+                <button type="submit" class="primary">Regenerate</button>
+            </form>
+
+            <a href="{{ url_for('dashboard') }}" class="secondary">Try another domain</a>
+        </div>
+    </section>
+</body>
+</html>

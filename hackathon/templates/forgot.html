@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#06b6d4">
+    <title>Forgot | SPARK AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.svg') }}" type="image/svg+xml">
+</head>
+<body class="login-body">
+    <div class="login-wrapper">
+        <div class="login-card">
+            <h1>Recover account</h1>
+            <p class="subtitle">Enter your email and we'll check for an account</p>
+
+            {% if msg %}
+                <p class="subtitle">{{ msg }}</p>
+            {% endif %}
+
+            <form method="POST">
+                <input type="email" name="email" placeholder="Your account email" required>
+                <button type="submit">Check</button>
+            </form>
+
+            <div class="auth-links">
+                <a href="{{ url_for('login') }}">Back to login</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

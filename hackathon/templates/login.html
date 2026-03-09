@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#06b6d4">
+    <title>SPARK AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.svg') }}" type="image/svg+xml">
+</head>
+<body class="login-body">
+    <div class="login-wrapper">
+        <div class="login-card">
+            <div style="display:flex; align-items:center; gap:12px; justify-content:center; margin-bottom:8px">
+                <img src="{{ url_for('static', filename='logo.svg') }}" alt="SPARK AI" style="height:44px">
+            </div>
+            <h1 style="margin-top:4px">Welcome back</h1>
+            <p class="subtitle">Login to explore smart startup ideas — save favorites and plan launches</p>
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <form method="POST">
+                <input type="email" name="email" placeholder="Enter email" required>
+                <input type="password" name="password" placeholder="Enter password" required>
+                <button type="submit">Login</button>
+            </form>
+
+            <div class="auth-links">
+                <a href="{{ url_for('forgot') }}">Forgot email?</a> · <a href="{{ url_for('register') }}">New user? Register</a>
+            </div>
+
+            <div class="demo-box">
+                <p><strong>Demo Login</strong></p>
+                <p>Email: admin@gmail.com</p>
+                <p>Password: 1234</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

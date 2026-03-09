@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#06b6d4">
+    <title>Cozy Snack Boxes — Mini Plan | SPARK AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.svg') }}" type="image/svg+xml">
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">🚀 SPARK AI</div>
+    <div class="nav-links">
+        <a href="{{ url_for('dashboard') }}">Home</a>
+        <a href="#" onclick="history.back(); return false;">Back</a>
+    </div>
+</nav>
+
+<main class="dashboard" style="max-width:900px; margin:24px auto; padding:18px;">
+    <h1>{{ plan.title }}</h1>
+    <p>{{ plan.overview }}</p>
+
+    <h3>Pricing</h3>
+    <p>{{ plan.pricing }}</p>
+
+    <h3>Initial budget</h3>
+    <p>{{ plan.initial_budget }}</p>
+
+    <h3>3-month budget</h3>
+    <ul>
+        {% for month, cost in plan.three_month_budget %}
+        <li><strong>{{ month }}:</strong> {{ cost }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Marketing checklist</h3>
+    <ul>
+        {% for item in plan.marketing_checklist %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Brand name options & taglines</h3>
+    <div class="results-grid">
+        {% for name, tagline in plan.brands %}
+        <article class="idea-card">
+            <header>
+                <h3>{{ name }}</h3>
+                <p class="tagline">{{ tagline }}</p>
+            </header>
+            <div style="margin-top:8px">
+                <form method="GET" action="{{ url_for('seed_samples') }}">
+                    <button type="submit" class="primary">Save All Samples to Favorites</button>
+                </form>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <p style="margin-top:18px; color:#425">You can save sample brand ideas to your Favorites and then open Favorites to tweak or remove them.</p>
+</main>
+</body>
+</html>

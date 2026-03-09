@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#06b6d4">
+    <title>Favorites | SPARK AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.svg') }}" type="image/svg+xml">
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo"><img src="{{ url_for('static', filename='logo.svg') }}" alt="SPARK AI"></div>
+    <div class="nav-links">
+        <a href="{{ url_for('dashboard') }}">Home</a>
+        <a href="#" onclick="history.back(); return false;">Back</a>
+        <a href="{{ url_for('history_page') }}">History</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</nav>
+
+<main class="result-page">
+    <h2>Your Favorites</h2>
+    <div class="results-grid">
+        {% for f in favorites %}
+        <article class="idea-card">
+            <header>
+                <h3>{{ f.startup_name }}</h3>
+                <p class="tagline">{{ f.tagline }}</p>
+            </header>
+            <div class="idea-body">
+                <p class="idea-text">{{ f.idea }}</p>
+                <ul class="meta">
+                    <li>🎯 <strong>Audience:</strong> {{ f.audience }}</li>
+                    <li>✨ <strong>Feature:</strong> {{ f.feature }}</li>
+                </ul>
+                <div class="card-actions">
+                    <!-- No index available here; saving/removing by idea text isn't exposed in UI. -->
+                    <form method="POST" action="{{ url_for('favorite_toggle') }}">
+                            <input type="hidden" name="idea_text" value="{{ f.idea }}">
+                            <button type="submit" class="save-btn">Remove</button>
+                        </form>
+                </div>
+            </div>
+        </article>
+        {% else %}
+        <p>You have no favorites yet. Save ideas from the results page.</p>
+        {% endfor %}
+    </div>
+</main>
+</body>
+</html>

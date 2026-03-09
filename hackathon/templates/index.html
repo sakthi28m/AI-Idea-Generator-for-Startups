@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#06b6d4">
+    <title>SPARK AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.svg') }}" type="image/svg+xml">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><img src="{{ url_for('static', filename='logo.svg') }}" alt="SPARK AI"></div>
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Home</a>
+            <a href="#" onclick="history.back(); return false;">Back</a>
+            <a href="{{ url_for('favorites_page') }}">Favorites</a>
+            <a href="{{ url_for('history_page') }}">History</a>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        <section class="hero">
+            <div>
+                <h1>Generate creative startup ideas — fast</h1>
+                <p>Type a domain or industry and get multiple AI-style idea variations tailored to your budget and timeline.</p>
+
+                <form method="POST" class="generate-form">
+                    <input type="text" name="domain" placeholder="Enter a domain (e.g. Fintech, HealthTech, EdTech)" required>
+
+                    <div class="row">
+                        <label>Time to profit (months)
+                            <select name="duration">
+                                <option value="1">1</option>
+                                <option value="3" selected>3</option>
+                                <option value="6">6</option>
+                                <option value="12">12</option>
+                            </select>
+                        </label>
+
+                        <label>Initial investment budget (USD)
+                            <input type="number" name="investment" min="0" step="100" placeholder="e.g. 1500" />
+                        </label>
+
+                        <label style="display:none">Variations
+                            <select name="count">
+                                <option value="4" selected>4</option>
+                            </select>
+                        </label>
+
+                        <button type="submit" class="primary">Generate Ideas</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="hero-illustration">
+                <img src="{{ url_for('static', filename='hero.svg') }}" alt="decorative hero">
+            </div>
+        </section>
+
+        <section class="examples">
+            <h2>Inspiration cards</h2>
+            <div class="cards">
+                <div class="example-card">Fintech — microloans for gig workers</div>
+                <div class="example-card">HealthTech — AI mental wellness coach</div>
+                <div class="example-card">AgriTech — crop health alerts</div>
+                <div class="example-card">EdTech — project-based learning platform</div>
+            </div>
+        </section>
+
+        <section class="examples">
+            <h2>Try a ready mini-plan</h2>
+            <div class="cards">
+                <div class="example-card"><a href="{{ url_for('business_plan') }}">Cozy Snack Boxes — mini business plan</a></div>
+                <div class="example-card"><a href="{{ url_for('seed_samples') }}">Load sample Snack Box ideas into Favorites</a></div>
+            </div>
+        </section>
+
+        <footer class="note">Tip: If ideas feel similar, increase variations or switch strategy.</footer>
+    </main>
+</body>
+</html>
