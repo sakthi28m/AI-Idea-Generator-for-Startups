@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b, #111827);
+    color: white;
+    min-height: 100vh;
+}
+
+/* Login Page */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #312e81, #1d4ed8);
+}
+
+.login-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    width: 400px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+.login-card h1 {
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.subtitle {
+    margin-bottom: 20px;
+    color: #dbeafe;
+}
+
+.login-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-card input {
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+}
+
+.login-card button {
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-card button:hover {
+    background: #1d4ed8;
+}
+
+.demo-box {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.08);
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #e0f2fe;
+}
+
+.error {
+    color: #fecaca;
+    margin-bottom: 15px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logout-btn {
+    text-decoration: none;
+    background: #ef4444;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: #dc2626;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 60px 20px 30px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #cbd5e1;
+}
+
+/* Form Section */
+.form-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.idea-form {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.idea-form input {
+    width: 380px;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+.idea-form button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 12px;
+    background: #22c55e;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.idea-form button:hover {
+    background: #16a34a;
+}
+
+/* Cards */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+.card {
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #93c5fd;
+}
+
+.card p {
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+/* Result Page */
+.result-page {
+    padding: 40px;
+}
+
+.main-result {
+    margin-bottom: 30px;
+}
+
+.result-card {
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+.result-card h1, .result-card h3 {
+    margin-bottom: 12px;
+}
+
+.result-card p {
+    line-height: 1.7;
+    color: #e5e7eb;
+}
+
+.tagline {
+    color: #93c5fd;
+    font-style: italic;
+    margin-bottom: 14px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.btn-center {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.generate-again {
+    text-decoration: none;
+    background: #22c55e;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 12px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.generate-again:hover {
+    background: #16a34a;
+}
