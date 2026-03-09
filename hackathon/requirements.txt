@@ -1,6 +1,0 @@
-Flask>=2.0
-gunicorn>=20.0
-
-# Optional: pin a lightweight template font
-# You can install additional AI libs if integrating real models later
-# e.g. openai>=0.XX
